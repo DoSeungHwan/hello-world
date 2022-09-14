@@ -1,0 +1,18 @@
+version: 0.1
+
+phases:
+  install:
+    commands:
+      - npm install
+  pre_build:
+    commands:
+      - echo pre-build
+  build:
+    commands:
+      - npm run build
+  post_build:
+    commands:
+      - ls -al
+      - aws s3 cp --recursive dist/ s3://[test-bucket-0126]/
+      - zip test.zip ./*
+      - aws s3 cp test.zip s3://[test-bucket-0126]/test.zip
