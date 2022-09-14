@@ -13,6 +13,6 @@ phases:
   post_build:
     commands:
       - ls -al
-      - aws s3 cp --recursive dist/ s3://[test-bucket-0126]/
+      - aws s3 cp --recursive dist/ s3://test-bucket-0126/
       - zip test.zip ./*
-      - aws s3 cp test.zip s3://[test-bucket-0126]/test.zip
+      - aws s3 cp test.zip s3://test-bucket-0126/test.zip
