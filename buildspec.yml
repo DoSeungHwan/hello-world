@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto11
+  build:
+    commands:
+      - echo Syncing environment variables...
+      - aws --version
+      - aws s3 sync ./foo-env-dev s3://foo-env-dev
+      - aws s3 sync ./foo-env-staging s3://foo-env-staging
+      - aws s3 sync ./foo-env-qa s3://foo-env-qa
+      - aws s3 sync ./foo-env-prod s3://foo-env-prod
+  post_build:
+    commands:
+      - echo Environment variable synchronization is complete.
