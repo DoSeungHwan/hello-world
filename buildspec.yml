@@ -1,17 +1,16 @@
-version: 0.2
+version: 0.1
+
 phases:
-install:
-  commands:
-    - npm install
-pre_build:
-  commands:
-    - npm run lint
-    # - command
-build:
-  commands:
-    - npm run build
-    # - command
-post_build:
-  commands:
-    - ls -al
-    - aws s3 cp --recursive dist/ s3://test-bucket-0126
+  install:
+    commands:
+      - npm install
+  pre_build:
+    commands:
+      - echo pre-build
+  build:
+    commands:
+      - npm run build
+  post_build:
+    commands:
+      - ls -al
+      - aws s3 cp --recursive dist/ s3://test-bucket-0126
